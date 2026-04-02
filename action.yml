@@ -155,13 +155,10 @@ inputs:
 outputs:
   image:
     description: "Full run image name:tag"
-    value: ${{ steps.image-name.outputs.lowercase }}:${{ inputs.image-tag }}
+    value: ${{ steps.build-images.outputs.run-image-output }}
   dev-image:
     description: "Full dev image name:tag"
-    value: ${{ steps.dev-image-name.outputs.lowercase }}:${{ inputs.dev-image-tag }}
-  slim-image:
-    description: "Full slim image name:tag"
-    value: ${{ steps.slim-image-name.outputs.lowercase }}:${{ inputs.slim-image-tag }}
+    value: ${{ steps.build-images.outputs.dev-image-output }}
 
 runs:
   using: "composite"

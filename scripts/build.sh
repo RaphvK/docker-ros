@@ -9,6 +9,8 @@ source "${ROOT_PATH}/scripts/utils.sh"
 build_image() {
     echo "Building stage '${TARGET}' for platform '${PLATFORM}' as '${IMAGE}' ..."
     BUILDX_ATTESTATIONS="${BUILDX_ATTESTATIONS:-false}"
+    # store image name and tag for actino output
+    echo "${TARGET}-image-output=${IMAGE}" >> "$GITHUB_OUTPUT"
 
     DOCKER_ARGS=(
       --file "$(dirname "$0")/../docker/Dockerfile"
