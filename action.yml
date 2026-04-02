@@ -152,6 +152,16 @@ inputs:
     description: "Target stage of Dockerfile (comma-separated list) [dev|run]"
     default: run
 
+outputs:
+  image:
+    description: "Full run image name:tag"
+    value: ${{ steps.image-name.outputs.lowercase }}:${{ inputs.image-tag }}
+  dev-image:
+    description: "Full dev image name:tag"
+    value: ${{ steps.dev-image-name.outputs.lowercase }}:${{ inputs.dev-image-tag }}
+  slim-image:
+    description: "Full slim image name:tag"
+    value: ${{ steps.slim-image-name.outputs.lowercase }}:${{ inputs.slim-image-tag }}
 
 runs:
   using: "composite"
